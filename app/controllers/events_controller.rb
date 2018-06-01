@@ -73,11 +73,7 @@ class EventsController < ApplicationController
     when "Art"
       data = nyartbeat_parse(geo, 0)
       @events_from_search = data["Events"]["Event"]
-      if params["Sort_by"]=="distance"
-        @events_from_search.sort_by!{|e| e["Distance"]}
-      elsif params["Sort_by"]== "date"
-        @events_from_search.sort_by!{|e| e["DateStart"]}
-      end
+
     when "Food"
       if params["Sort_by"]== "distance"
         data = eventbrite(geo)
@@ -89,11 +85,7 @@ class EventsController < ApplicationController
     when "Music"
       data = ticketmaster_parse(geo)
       @events_from_search = data["_embedded"]["events"]
-      if params["Sort_by"]=="distance"
-        @events_from_search.sort_by!{|e| e["distance"]}
-      elsif params["Sort_by"]== "date"
-        @events_from_search.sort_by!{|e| e["dates"]["start"]["localDate"]}
-      end
+
     end
 
 
@@ -110,6 +102,12 @@ class EventsController < ApplicationController
 
       case params["search_type"]
       when "Art"
+        if params["Sort_by"]=="distance"
+          @events_from_search.sort_by!{|e| e["Distance"]}
+        elsif params["Sort_by"]== "date"
+          @events_from_search.sort_by!{|e| e["DateStart"]}
+        end
+
         art = Category.find_or_create_by(name: "Art")
 
         @events_from_search.each{|e| new_art_event(e,art,loc)} if @@search_results.empty?
@@ -120,6 +118,14 @@ class EventsController < ApplicationController
         @events_from_search.each{|e| new_food_event(e, food, loc)} if @@search_results.empty?
 
       when "Music"
+        
+        if params["Sort_by"]=="distance"
+          @events_from_search.sort_by!{|e| e["distance"]}
+        elsif params["Sort_by"]== "date"
+          @events_from_search.sort_by!{|e| e["dates"]["start"]["localDate"]}
+        end
+
+
         music = Category.find_or_create_by(name:"Music")
         location = Location.find_or_create_by(latitude:geo['lat'],longitude:geo['lng'])
 

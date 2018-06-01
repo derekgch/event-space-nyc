@@ -18,7 +18,7 @@
     <p>Price: <%= event_data["price"] %></p>
 
     <p><%= truncate(event_data["description"], length: 300, separator: " ")%>
-      <%= link_to "See more", controller: "events", action: "info", id: i, 'data-no-turbolink' => true %>
+      <%= link_to "See more", controller: "events", action: "info", id: i %>
      </p>
     <%= form_tag save_path(@user.id), method: 'post' do%>
       <%= hidden_field_tag "event_id", i %>

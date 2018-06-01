@@ -13,7 +13,7 @@
 <ul>
   <% @user.events.each_with_index do |event,i| %>
     <div class="each-event">
-      <h3> <%= link_to event.title, event_path(event), 'data-no-turbolink' => true %> </h3>
+      <h3> <%= link_to event.title, event_path(event) %> </h3>
       <p>Category: <%= event.category.name %> </p>
       <p>Date: <%= event.date %> </p>
       <p>Location: <%= event.location.neighborhood %> </p><br>
@@ -27,18 +27,7 @@
 
   <div class="links">
     <% if !@search_events.empty? %>
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <%= link_to "Back to Search Results", display_path%>
-=======
       <p><%= link_to "Back to Search Results", display_path%></p>
->>>>>>> sang2
-=======
-      <p><%= link_to "Back to Search Results", display_path%></p>
-=======
-      <%= link_to "Back to Search Results", display_path%>
->>>>>>> 115dac46349f8b1023a89f05907079c8d21357b9
->>>>>>> master
     <% end %>
   </div>
 
