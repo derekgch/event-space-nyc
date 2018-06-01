@@ -48,7 +48,7 @@ def address_to_geo(address)
   # byebug
   link = 'https://maps.googleapis.com/maps/api/geocode/json?address='
   key= '&key=AIzaSyB8y9s45xVG7OAhCdYa14p80sQBEiKEgV8'
-  address = "nyc "+address.gsub(' ', '+')
+  address = address.gsub(' ', '+')
   link = link + address + key
   data = parse_api(link)
   # binding.pry

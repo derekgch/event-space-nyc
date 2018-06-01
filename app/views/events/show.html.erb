@@ -49,7 +49,7 @@ markers = handler.addMarkers(<%=raw @hash.to_json %>);
 </script>
 
 <div class="links">
-  <% if @events.count >0 %>
+  <% if @events.count > 0 %>
   <p><%= link_to "Back to Search Results", display_path %></p>
   <% end %>
   <p><%= link_to "All Events", events_path %></p>

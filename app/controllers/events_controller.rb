@@ -61,7 +61,7 @@ class EventsController < ApplicationController
   def results
 #if event.category == music // event.category == art
     @user = current_user
-    if params[:search].blank?
+    if params[:search].blank? || params[:search] == nil || params[:search]==""
       flash[:errors] = "Please put a valid search option."
       redirect_to search_path
     else

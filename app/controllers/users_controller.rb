@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @search_events = @@search_results
   end
 
   def edit
