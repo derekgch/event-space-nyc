@@ -3,12 +3,8 @@
 <br>
 
 <h1>Log In!</h1>
-<% if flash[:errors] %>
-  <ul>
-  <%= flash[:errors] %>
-</ul>
-<% end %>
 <br>
+
 
 <%= form_tag sessions_path do %>
 <table>
@@ -22,5 +18,15 @@
   </tr>
 </table>
 <br>
+
 <%= submit_tag "Log In", class: "button" %>
 <%end%>
+
+<div class="errors">
+  <% if flash[:errors] %>
+    <ul>
+    <%= flash[:errors] %>
+  </ul>
+  <br>
+  <% end %>
+</div>

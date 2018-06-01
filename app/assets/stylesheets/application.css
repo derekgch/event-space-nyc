@@ -91,3 +91,8 @@
      cursor: pointer;
      margin-left: 10px;
  }
+
+.errors {
+  font-size: 24px;
+  font-weight: 800;
+}
